@@ -83,7 +83,6 @@ const juegoTriviaIntentHandler = {
         && handlerInput.requestEnvelope.request.intent.name === 'juegoTriviaIntent';
     },
     handle(handlerInput) {
-        
         const speakOutput = trivia2[num].pregunta + ", las posibles respuestas son " + respuesta1 + ", " + respuesta2 + " y " + respuesta3;
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -101,10 +100,24 @@ const respuestasHandler = {
         const request = handlerInput.requestEnvelope.request;
         var respuesta = request.intent.slots.numeros.value;
         var speakOutput="";
-        if(respuesta1===respuesta){
-         speakOutput = "tu respuesta es correcta, para seguir jugando dime trivia, que probabilidad o salir";   
-        }else{
-            speakOutput = "tu respuesta es incorrecta, dime otra respuesta o dime que probabilidad, trivia para seguir jugando o salir";
+        if(num===0){
+            if(respuesta3===respuesta){
+                speakOutput = "tu respuesta es correcta, para seguir jugando dime trivia, que probabilidad o salir";   
+            }else{
+                speakOutput = "tu respuesta es incorrecta, dime otra respuesta o dime que probabilidad, trivia para seguir jugando o salir";
+            }
+        }else if(num===1){
+            if(respuesta2===respuesta){
+                speakOutput = "tu respuesta es correcta, para seguir jugando dime trivia, que probabilidad o salir";   
+            }else{
+                speakOutput = "tu respuesta es incorrecta, dime otra respuesta o dime que probabilidad, trivia para seguir jugando o salir";
+            }
+        }else if(num===2){
+            if(respuesta2===respuesta){
+                speakOutput = "tu respuesta es correcta, para seguir jugando dime trivia, que probabilidad o salir";   
+            }else{
+                speakOutput = "tu respuesta es incorrecta, dime otra respuesta o dime que probabilidad, trivia para seguir jugando o salir";
+            }
         }
         return handlerInput.responseBuilder
             .speak(speakOutput)
